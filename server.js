@@ -6,8 +6,8 @@ const epilogue = require('epilogue')
 const OktaJwtVerifier = require('@okta/jwt-verifier')
 
 const oktaJwtVerifier = new OktaJwtVerifier({
-  clientId: '0oadkeg0yaB0wvITG0h7', // '{yourClientId}',
-  issuer: 'https://dev-593230.oktapreview.com/oauth2/default' // 'https://{yourOktaDomain}/oauth2/default'
+  clientId: '{yourClientId}',
+  issuer: 'https://{yourOktaDomain}/oauth2/default'
 })
 
 let app = express()
