@@ -7,10 +7,10 @@
         <table class="table table-striped">
           <thead>
             <tr>
-              <th width="80">ID</th>
+              <th>ID</th>
               <th>Title</th>
-              <th width="250">Updated At</th>
-              <th width="130">&nbsp;</th>
+              <th>Updated At</th>
+              <th>&nbsp;</th>
             </tr>
           </thead>
           <tbody>
@@ -77,6 +77,10 @@ export default {
     },
     async deletePost (id) {
       if (confirm('Are you sure you want to delete this post?')) {
+        // if we are actively editing a post we want to delete, remove it from the form
+        if (this.model.id === id) {
+          this.model = {}
+        }
         await api.deletePost(id)
         await this.refreshPosts()
       }
