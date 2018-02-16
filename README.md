@@ -55,7 +55,6 @@ const oktaJwtVerifier = new OktaJwtVerifier({
 ```
 
 **NOTE:** The value of `{yourOktaDomain}` should be something like `dev-123456.oktapreview.com`. Make sure you don't include `-admin` in the value!
-```
 
 #### Client Configuration
 
