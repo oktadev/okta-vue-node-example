@@ -19,7 +19,8 @@
               <td>{{ post.title }}</td>
               <td>{{ post.updatedAt }}</td>
               <td class="text-right">
-                <a href="#" @click.prevent="populatePostToEdit(post)">Edit</a> - <a href="#" @click.prevent="deletePost(post.id)">Delete</a>
+                <a href="#" @click.prevent="populatePostToEdit(post)">Edit</a> - 
+                <a href="#" @click.prevent="deletePost(post.id)">Delete</a>
               </td>
             </tr>
           </tbody>
@@ -77,7 +78,7 @@ export default {
     },
     async deletePost (id) {
       if (confirm('Are you sure you want to delete this post?')) {
-        // if we are actively editing a post we want to delete, remove it from the form
+        // if we are editing a post we deleted, remove it from the form
         if (this.model.id === id) {
           this.model = {}
         }
