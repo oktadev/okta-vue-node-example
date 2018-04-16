@@ -18,7 +18,7 @@ Please read [Build a Basic CRUD App with Vue.js and Node](https://developer.okta
 To install this example application, run the following commands:
 
 ```bash
-git clone git@github.com:oktadeveloper/okta-vue-node-example.git
+git clone https://github.com/oktadeveloper/okta-vue-node-example.git
 cd okta-vue-node-example
 npm install
 ```
