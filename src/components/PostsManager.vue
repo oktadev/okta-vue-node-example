@@ -19,7 +19,7 @@
               <td>{{ post.title }}</td>
               <td>{{ post.updatedAt }}</td>
               <td class="text-right">
-                <a href="#" @click.prevent="populatePostToEdit(post)">Edit</a> - 
+                <a href="#" @click.prevent="populatePostToEdit(post)">Edit</a> -
                 <a href="#" @click.prevent="deletePost(post.id)">Delete</a>
               </td>
             </tr>
