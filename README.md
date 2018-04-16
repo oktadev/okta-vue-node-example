@@ -1,5 +1,5 @@
 # Basic CRUD with Vue.js and Node
- 
+
 This example app shows how to create a Node.js API and display its data with a Vue.js UI.
 
 Please read [Build a Basic CRUD App with Vue.js and Node](https://developer.okta.com/blog/2018/02/15/build-crud-app-vuejs-node) to see how this app was created.
@@ -18,7 +18,7 @@ Please read [Build a Basic CRUD App with Vue.js and Node](https://developer.okta
 To install this example application, run the following commands:
 
 ```bash
-git clone git@github.com:oktadeveloper/okta-vue-node-example.git
+git clone https://github.com/oktadeveloper/okta-vue-node-example.git
 cd okta-vue-node-example
 npm install
 ```
@@ -26,26 +26,26 @@ npm install
 This will get a copy of the project installed locally. To start each app, follow the instructions below.
 
 To run the server:
- 
+
 ```bash
 node ./src/server
 ```
 
-To run the client, cd into the `client` folder and run:
- 
+To run the client:
+
 ```bash
 npm run dev
 ```
 
 ### Create an Application in Okta
 
-You will need to [create an OpenID Connect Application in Okta](https://developer.okta.com/blog/2018/02/15/build-crud-app-vuejs-node#add-authentication-with-okta) to get your values to perform authentication. 
+You will need to [create an OpenID Connect Application in Okta](https://developer.okta.com/blog/2018/02/15/build-crud-app-vuejs-node#add-authentication-with-okta) to get your values to perform authentication.
 
 Log in to your Okta Developer account (or [sign up](https://developer.okta.com/signup/) if you don’t have an account) and navigate to **Applications** > **Add Application**. Click **Single-Page App**, click **Next**, and give the app a name you’ll remember, and click **Done**.
 
 #### Server Configuration
 
-Set the `issuer` and copy the `clientId` into `src/server.js`. 
+Set the `issuer` and copy the `clientId` into `src/server.js`.
 
 ```javascript
 const oktaJwtVerifier = new OktaJwtVerifier({
@@ -54,7 +54,7 @@ const oktaJwtVerifier = new OktaJwtVerifier({
 })
 ```
 
-**NOTE:** The value of `{yourOktaDomain}` should be something like `dev-123456.oktapreview.com`. Make sure you don't include `-admin` in the value!
+**NOTE:** The value of `{yourOktaDomain}` should be something like `dev-123456.oktapreview`. Make sure you don't include `-admin` in the value!
 
 #### Client Configuration
 
