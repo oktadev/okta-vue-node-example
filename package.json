@@ -20,7 +20,7 @@
     "bootstrap": "^4.1.0",
     "bootstrap-vue": "^2.0.0-rc.7",
     "cors": "^2.8.4",
-    "epilogue": "^0.7.1",
+    "finale-rest": "^1.0.6",
     "sequelize": "^4.37.6",
     "sqlite3": "^4.0.0",
     "vue": "^2.5.2",

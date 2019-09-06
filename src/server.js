@@ -2,7 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const Sequelize = require('sequelize')
-const epilogue = require('epilogue')
+const finale = require('finale-rest')
 const OktaJwtVerifier = require('@okta/jwt-verifier')
 
 const oktaJwtVerifier = new OktaJwtVerifier({
@@ -46,14 +46,14 @@ let Post = database.define('posts', {
   body: Sequelize.TEXT
 })
 
-// Initialize epilogue
-epilogue.initialize({
+// Initialize finale
+finale.initialize({
   app: app,
   sequelize: database
 })
 
 // Create the dynamic REST resource for our Post model
-let userResource = epilogue.resource({
+let userResource = finale.resource({
   model: Post,
   endpoints: ['/posts', '/posts/:id']
 })
