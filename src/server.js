@@ -22,7 +22,7 @@ app.use((req, res, next) => {
   }
   let parts = req.headers.authorization.trim().split(' ')
   let accessToken = parts.pop()
-  oktaJwtVerifier.verifyAccessToken(accessToken)
+  oktaJwtVerifier.verifyAccessToken(accessToken, 'api://default')
     .then(jwt => {
       req.user = {
         uid: jwt.claims.uid,

@@ -34,16 +34,16 @@ export default {
     '$route': 'refreshActiveUser'
   },
   methods: {
-    login () {
-      this.$auth.loginRedirect()
+    async login () {
+      this.$auth.signInWithRedirect()
     },
     async refreshActiveUser () {
-      this.activeUser = await this.$auth.getUser()
+      if (this.authState.isAuthenticated) {
+        this.activeUser = await this.$auth.getUser()
+      }
     },
     async logout () {
-      await this.$auth.logout()
-      await this.refreshActiveUser()
-      this.$router.push('/')
+      await this.$auth.signOut()
     }
   }
 }

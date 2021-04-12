@@ -2,16 +2,18 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Hello from '@/components/Hello'
 import PostsManager from '@/components/PostsManager'
-import Auth from '@okta/okta-vue'
+import OktaVue, { LoginCallback } from '@okta/okta-vue'
+import { OktaAuth } from '@okta/okta-auth-js'
 
-Vue.use(Auth, {
+const oktaAuth = new OktaAuth({
   issuer: 'https://{yourOktaDomain}/oauth2/default',
-  client_id: '{yourClientId}',
-  redirect_uri: 'http://localhost:8080/implicit/callback',
-  scope: 'openid profile email'
+  clientId: '{yourClientId}',
+  redirectUri: window.location.origin + '/callback',
+  scopes: ['openid', 'profile', 'email']
 })
 
 Vue.use(Router)
+Vue.use(OktaVue, { oktaAuth })
 
 let router = new Router({
   mode: 'history',
@@ -22,8 +24,8 @@ let router = new Router({
       component: Hello
     },
     {
-      path: '/implicit/callback',
-      component: Auth.handleCallback()
+      path: '/callback',
+      component: LoginCallback
     },
     {
       path: '/posts-manager',
@@ -35,7 +37,5 @@ let router = new Router({
     }
   ]
 })
-
-router.beforeEach(Vue.prototype.$auth.authRedirectGuard())
 
 export default router
