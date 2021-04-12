@@ -41,7 +41,11 @@ npm run dev
 
 You will need to [create an OpenID Connect Application in Okta](https://developer.okta.com/blog/2018/02/15/build-crud-app-vuejs-node#add-authentication-with-okta) to get your values to perform authentication.
 
-Log in to your Okta Developer account (or [sign up](https://developer.okta.com/signup/) if you don’t have an account) and navigate to **Applications** > **Add Application**. Click **Single-Page App**, click **Next**, and give the app a name you’ll remember, and click **Done**.
+Before you begin, you’ll need a free Okta developer account. Install the [Okta CLI](https://cli.okta.com/) and run `okta register` to sign up for a new account. If you already have an account, run `okta login`.
+
+Then, run `okta apps create`. Select the default app name, or change it as you see fit. Choose **Single-Page App** and press **Enter**.
+
+Use `http://localhost:8080/callback` for the Redirect URI and accept the default Logout Redirect URI of `http://localhost:8080`.
 
 #### Server Configuration
 
@@ -50,22 +54,20 @@ Set the `issuer` and copy the `clientId` into `src/server.js`.
 ```javascript
 const oktaJwtVerifier = new OktaJwtVerifier({
   clientId: '{yourClientId}',
-  issuer: 'https://{yourOktaDomain}.com/oauth2/default'
+  issuer: 'https://{yourOktaDomain}/oauth2/default'
 })
 ```
-
-**NOTE:** The value of `{yourOktaDomain}` should be something like `dev-123456.oktapreview`. Make sure you don't include `-admin` in the value!
 
 #### Client Configuration
 
 Set the `issuer` and copy the `clientId` into `src/router/index.js`.
 
 ```javascript
-Vue.use(Auth, {
-  issuer: 'https://{yourOktaDomain}.com/oauth2/default',
-  client_id: '{yourClientId}',
-  redirect_uri: 'http://localhost:8080/implicit/callback',
-  scope: 'openid profile email'
+const oktaAuth = new OktaAuth({
+  issuer: 'https://{yourOktaDomain}/oauth2/default',
+  clientId: '{yourClientId}',
+  redirectUri: window.location.origin + '/callback',
+  scopes: ['openid', 'profile', 'email']
 })
 ```
 
@@ -74,11 +76,11 @@ Vue.use(Auth, {
 This example uses the following libraries provided by Okta:
 
 * [Okta JWT Verifier](https://github.com/okta/okta-oidc-js/tree/master/packages/jwt-verifier)
-* [Okta Vue SDK](https://github.com/okta/okta-oidc-js/tree/master/packages/okta-vue)
+* [Okta Vue SDK](https://github.com/okta/okta-vue)
 
 ## Help
 
-Please post any questions as comments on the [blog post](https://developer.okta.com/blog/2018/02/15/build-crud-app-vuejs-node), or visit our [Okta Developer Forums](https://devforum.okta.com/). You can also email developers@okta.com if you would like to create a support ticket.
+Please post any questions as comments on the [blog post](https://developer.okta.com/blog/2018/02/15/build-crud-app-vuejs-node), or visit our [Okta Developer Forums](https://devforum.okta.com/).
 
 ## License
 
