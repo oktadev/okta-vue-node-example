@@ -22,7 +22,7 @@
     "bootstrap-vue": "^2.21.2",
     "cors": "^2.8.5",
     "finale-rest": "^1.1.1",
-    "sequelize": "^6.6.2",
+    "sequelize": "^6.28.2",
     "sqlite3": "^5.0.3",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
